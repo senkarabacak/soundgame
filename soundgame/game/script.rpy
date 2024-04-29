@@ -4,6 +4,7 @@ image hamster = Solid(color="#ffffff",  xsize=50, ysize=50)
 # image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.2, yalign=0.2)
 # image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.5, yalign=0.8)
 # image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.6, yalign=0.6)
+define e = Character("Eileen", who_color="#c8ffc8")
 
 #define sound_collision = "sounds/sinister.mp3"
 default change_rectone_visibility = False
@@ -16,6 +17,7 @@ define config.log = "mylogs.txt"
 default g_time = 0
 
 default rect_positions = []
+define instances = []
 
 screen timerFame(max, endup):
     frame:
@@ -36,6 +38,12 @@ init  python:
     import random
     import weakref
 
+    if renpy.windows:
+        config.tts_voice = "Mark"
+    elif renpy.macintosh:
+        config.tts_voice = "Alex"
+    elif renpy.linux:
+        config.tts_voice = "english_rp"
     k_pressed = False
     n_pressed = False
     selected_rects = []
@@ -70,7 +78,8 @@ init  python:
 
 
     class Rectangle:
-        instances = []
+        #instances = []
+        instances = instances
 
         def __init__(self, x, y, xalign, yalign, path):
             self.x = x
@@ -139,6 +148,12 @@ init  python:
 
         return positions
 
+
+    def testFunc():
+        
+            renpy.jump("level_two")
+        
+
     hamster_coordinate=Coordinate(0.5,0.5,0.05,0.05,0.95,0.95)
 
     renpy.music.register_channel("collision_channel", mixer="sfx", loop=False)
@@ -166,9 +181,9 @@ init  python:
 
 label start:
 
-    "this is soundgame"
+    alt "this is soundgame"
 
-    "Once you add a story, pictures, and music, you can release it to the world!"
+    e "Once you add a story, pictures, and music, you can release it to the world!"
     #show screen level_display
 
 
@@ -181,7 +196,7 @@ label level_one:
    
     python:
         
-            rect_positions = generate_non_overlapping_positions(4, (0.05, 0.05))
+            rect_positions = generate_non_overlapping_positions(2, (0.05, 0.05))
             
             print(rect_positions)
   
@@ -189,6 +204,9 @@ label level_one:
                     Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
  
     call screen hamster_cage   
+    if not instances:
+        hide screen hamster_cage
+        jump level_two
 
 
 label level_two:
@@ -220,7 +238,9 @@ label after:
     "not finished level "      
 
 
-screen hamster_cage:    
+screen hamster_cage:  
+    if not instances:
+        text "click anywhere"
     frame:
         add "hamster" anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)  
         key "g" action ToggleVariable("change_rectone_visibility")    
@@ -235,6 +255,9 @@ screen hamster_cage:
             for xalign, yalign in rect_positions:
                 add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
 
+        # if not instances:
+        #     text "Click anywhere on this frame to hide the hamster cage."
+
         python:        
         
             hamster_rect = pygame.Rect(hamster_coordinate.x * renpy.config.screen_width, hamster_coordinate.y * renpy.config.screen_height, 100, 100)       
@@ -244,7 +267,9 @@ screen hamster_cage:
             #     xalign, yalign = position  # Unpack the position list into xalign and yalign
             #     renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
                 
-
+            # if not Rectangle.instances:
+            #     renpy.hide_screen("hamster_cage")
+            #     renpy.jump("level_two")
 
             for rect in Rectangle.instances:
                 print(rect)
@@ -260,13 +285,13 @@ screen hamster_cage:
                         renpy.log("The 'n' key was pressed!")
                         selected_rects.append(rect)
                         renpy.log(selected_rects)
-                        renpy.notify(selected_rects)
+                        renpy.notify("you have selected the sound")
                         n_pressed = False
-                else:                
-                    
+                else:                     
                     if music_started:
                         renpy.music.stop(channel=collision_channel)
                         rect.music_started = False
+            
             n_pressed = False
 
 
@@ -278,6 +303,8 @@ screen hamster_cage:
                             selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
                             renpy.music.stop(channel=collision_channel)
                     selected_rects.clear()
+
+            
             
 
 

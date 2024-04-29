@@ -1,74 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 198, in script
-    call screen hamster_cage
-  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/script.rpy", line 230, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 230, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 231, in execute
-    frame:
-  File "game/script.rpy", line 245, in execute
-    python:
-  File "game/script.rpy", line 285, in <module>
-    selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
-  File "game/script.rpy", line 97, in remove_instance_by_position
-    cls.remove_instance(instance)
-AttributeError: type object 'Rectangle' has no attribute 'remove_instance'
+  File "game/script.rpy", line 188, in script
+    e "Once you add a story, pictures, and music, you can release it to the world!"
+Exception: Sayer 'e' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 198, in script
-    call screen hamster_cage
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
-    self.call("execute")
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\exports.py", line 3413, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in interact_core
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 480, in visit_all
-    callback(self)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in <lambda>
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 491, in per_interact
-    self.update()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
-    self.screen.function(**self.scope)
-  File "game/script.rpy", line 230, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 230, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 231, in execute
-    frame:
-  File "game/script.rpy", line 245, in execute
-    python:
-  File "game/script.rpy", line 285, in <module>
-    selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
-  File "game/script.rpy", line 97, in remove_instance_by_position
-    cls.remove_instance(instance)
-AttributeError: type object 'Rectangle' has no attribute 'remove_instance'
+  File "game/script.rpy", line 188, in script
+    e "Once you add a story, pictures, and music, you can release it to the world!"
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 2557, in execute
+    Say.execute(self)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'e' is not defined.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 soundgame 1.0
-Mon Apr 29 22:17:46 2024
+Mon Apr 29 23:51:04 2024
