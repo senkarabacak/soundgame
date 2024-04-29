@@ -1,29 +1,37 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 158, in script
-    "Navigate the hamster to interact with rectangles."
-  File "renpy/common/00action_other.rpy", line 586, in __call__
-    rv = self.callable(*self.args, **self.kwargs)
-TypeError: transform() missing 3 required positional arguments: 'd', 'show_time', and 'animate_time'
+  File "game/script.rpy", line 186, in script
+    call screen hamster_cage
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/script.rpy", line 224, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 224, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 225, in execute
+    frame:
+  File "game/script.rpy", line 257, in execute
+    python:
+  File "game/script.rpy", line 264, in <module>
+    renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
+AttributeError: module 'renpy.exports' has no attribute 'add'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 158, in script
-    "Navigate the hamster to interact with rectangles."
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 2557, in execute
-    Say.execute(self)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 615, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\exports.py", line 1493, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\character.py", line 1394, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\character.py", line 1045, in do_display
-    display_say(who,
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\character.py", line 741, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "game/script.rpy", line 186, in script
+    call screen hamster_cage
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
+    self.call("execute")
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\exports.py", line 3413, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
@@ -42,17 +50,21 @@ Full traceback:
     root_widget.visit_all(lambda d : d.per_interact())
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 491, in per_interact
     self.update()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 726, in update
-    i.set_transform_event(self.current_transform_event)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\behavior.py", line 2757, in set_transform_event
-    rv = run(self.action)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\behavior.py", line 395, in run
-    return action(*args, **kwargs)
-  File "renpy/common/00action_other.rpy", line 586, in __call__
-    rv = self.callable(*self.args, **self.kwargs)
-TypeError: transform() missing 3 required positional arguments: 'd', 'show_time', and 'animate_time'
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 224, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 224, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 225, in execute
+    frame:
+  File "game/script.rpy", line 257, in execute
+    python:
+  File "game/script.rpy", line 264, in <module>
+    renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
+AttributeError: module 'renpy.exports' has no attribute 'add'
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 soundgame 1.0
-Sun Apr 28 23:13:51 2024
+Mon Apr 29 19:13:55 2024

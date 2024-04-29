@@ -15,6 +15,7 @@ define config.log = "mylogs.txt"
 
 default g_time = 0
 
+default rect_positions = []
 
 screen timerFame(max, endup):
     frame:
@@ -38,7 +39,7 @@ init  python:
     k_pressed = False
     n_pressed = False
     selected_rects = []
-    
+    list
     class Coordinate:
         def __init__(self,x,y,xmin,ymin,xmax,ymax):
 
@@ -195,7 +196,7 @@ label level_two:
     
     python:
         
-            rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))
+            rect_positions = generate_non_overlapping_positions(6, (0.1, 0.1))
             
             print(rect_positions)
         #python:
@@ -214,7 +215,30 @@ label level_two:
     # Run the Python script inside Ren'Py
 
 
+label level_three:
 
+    "level three"
+    
+    
+    python:
+        
+            rect_positions = generate_non_overlapping_positions(8, (0.1, 0.1))
+            
+            print(rect_positions)
+        #python:
+            rectOnePy = Rectangle(100,100,rect_positions[0][0],rect_positions[0][1],"sounds/sinister.mp3").render()
+            rectTwoPy = Rectangle(100,100,rect_positions[1][0],rect_positions[1][1],"sounds/sinister.mp3").render()
+            rectThreePy = Rectangle(100,100,rect_positions[2][0],rect_positions[2][1],"sounds/biolife.mp3").render()
+            rectFourPy = Rectangle(100,100,rect_positions[3][0],rect_positions[3][1],"sounds/biolife.mp3").render()
+
+        
+        # image rectone = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
+        # image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
+        # image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
+        # image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
+
+    call screen hamster_cage   
+    # Run the Python script inside Ren'Py
 
 label after: 
     "not finished level "      
@@ -239,25 +263,32 @@ screen hamster_cage:
         # # if k_pressed:
         # #     call "level_two"
 
-        if change_rectone_visibility == True:        
+        #  if change_rectone_visibility == True:        
             # if len(rect_positions):
-            #         add "rectone"
-            #         add "recttwo"
-            #         add "rectthree"
-            #         add "rectfour"
+                    # add "rectone"
+                    # add "recttwo"
+                    # add "rectthree"
+                    # add "rectfour"
             # #$ if change_rectone_visibility: renpy.log("The 'g' key was pressed!")
 
-            
-            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
-
+            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
+            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
+            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
+            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
+        
+        for xalign, yalign in rect_positions:
+            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
 
         python:        
         
             hamster_rect = pygame.Rect(hamster_coordinate.x * renpy.config.screen_width, hamster_coordinate.y * renpy.config.screen_height, 100, 100)       
             collision_channel = 'collision_channel'
+
+            # for position in rect_positions:
+            #     xalign, yalign = position  # Unpack the position list into xalign and yalign
+            #     renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
+                
+
 
             for rect in Rectangle.instances:
                 print(rect)

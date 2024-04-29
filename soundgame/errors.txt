@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 207: Indentation mismatch.
+File "game/script.rpy", line 243: frame expects a non-empty block.
+    if change_rectone_visibility == True:        
+                                                 ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sun Apr 28 23:28:32 2024
+Mon Apr 29 19:13:40 2024
