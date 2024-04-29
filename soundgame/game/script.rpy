@@ -89,6 +89,18 @@ init  python:
         def remove_all_instances(cls):
             while cls.instances:
                 cls.instances.pop()  # Each pop should eventually trigger __del__()
+        @classmethod
+        def remove_instance(cls, instance):
+            if instance in cls.instances:
+                cls.instances.remove(instance)
+                del instance  # Optionally delete the object; __del__ will be called
+
+        @classmethod
+        def remove_instance_by_position(cls, xalign, yalign):
+            for instance in list(cls.instances):
+                if instance.xalign == xalign and instance.yalign == yalign:
+                    cls.remove_instance(instance)
+                    break  # Break after removing to avoid modifying list during iteration if only one is to be removed
 
         def render(self):
         # Calculate the top-left corner based on alignment and size
@@ -159,6 +171,7 @@ label start:
     "Once you add a story, pictures, and music, you can release it to the world!"
     #show screen level_display
 
+
 label level_one:
     "level one"
     #show screen timerFame(10, "level_two")
@@ -168,77 +181,40 @@ label level_one:
    
     python:
         
-            rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))
+            rect_positions = generate_non_overlapping_positions(4, (0.05, 0.05))
             
             print(rect_positions)
-        #python:
-            rectOnePy = Rectangle(100,100,rect_positions[0][0],rect_positions[0][1],"sounds/sinister.mp3").render()
-            rectTwoPy = Rectangle(100,100,rect_positions[1][0],rect_positions[1][1],"sounds/sinister.mp3").render()
-            rectThreePy = Rectangle(100,100,rect_positions[2][0],rect_positions[2][1],"sounds/biolife.mp3").render()
-            rectFourPy = Rectangle(100,100,rect_positions[3][0],rect_positions[3][1],"sounds/biolife.mp3").render()
-
-        
-        # image rectone = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-        # image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-        # image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-        # image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
-
+  
+            for i, pos in enumerate(rect_positions):
+                    Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+ 
     call screen hamster_cage   
-    # Run the Python script inside Ren'Py
-
-
 
 
 label level_two:
-
-    "level two"
-    
-    
+    "level two"   
     python:
         
-            rect_positions = generate_non_overlapping_positions(6, (0.1, 0.1))
-            
+            rect_positions = generate_non_overlapping_positions(6, (0.05, 0.05))            
             print(rect_positions)
-        #python:
-            rectOnePy = Rectangle(100,100,rect_positions[0][0],rect_positions[0][1],"sounds/sinister.mp3").render()
-            rectTwoPy = Rectangle(100,100,rect_positions[1][0],rect_positions[1][1],"sounds/sinister.mp3").render()
-            rectThreePy = Rectangle(100,100,rect_positions[2][0],rect_positions[2][1],"sounds/biolife.mp3").render()
-            rectFourPy = Rectangle(100,100,rect_positions[3][0],rect_positions[3][1],"sounds/biolife.mp3").render()
-
-        
-        # image rectone = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-        # image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-        # image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-        # image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
+            rectangles = [
+                Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+                for i, pos in enumerate(rect_positions)
+            ]
 
     call screen hamster_cage   
-    # Run the Python script inside Ren'Py
-
 
 label level_three:
-
-    "level three"
-    
-    
-    python:
-        
-            rect_positions = generate_non_overlapping_positions(8, (0.1, 0.1))
-            
+    "level three"    
+    python:        
+            rect_positions = generate_non_overlapping_positions(8, (0.05, 0.05))            
             print(rect_positions)
-        #python:
-            rectOnePy = Rectangle(100,100,rect_positions[0][0],rect_positions[0][1],"sounds/sinister.mp3").render()
-            rectTwoPy = Rectangle(100,100,rect_positions[1][0],rect_positions[1][1],"sounds/sinister.mp3").render()
-            rectThreePy = Rectangle(100,100,rect_positions[2][0],rect_positions[2][1],"sounds/biolife.mp3").render()
-            rectFourPy = Rectangle(100,100,rect_positions[3][0],rect_positions[3][1],"sounds/biolife.mp3").render()
-
-        
-        # image rectone = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-        # image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-        # image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-        # image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
-
+            rectangles = [
+                Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+                for i, pos in enumerate(rect_positions)
+            ]
+          
     call screen hamster_cage   
-    # Run the Python script inside Ren'Py
 
 label after: 
     "not finished level "      
@@ -254,30 +230,10 @@ screen hamster_cage:
         key "focus_up" action SetField(hamster_coordinate,"yoffset",-0.005)
         key "focus_down" action SetField(hamster_coordinate,"yoffset",+0.005)
         key "dismiss" action Return("hamster")
-
-
-        # image rectone = Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-        # image recttwo = Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-        # image rectthree = Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-        # image rectfour = Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
-        # # if k_pressed:
-        # #     call "level_two"
-
-        #  if change_rectone_visibility == True:        
-            # if len(rect_positions):
-                    # add "rectone"
-                    # add "recttwo"
-                    # add "rectthree"
-                    # add "rectfour"
-            # #$ if change_rectone_visibility: renpy.log("The 'g' key was pressed!")
-
-            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[0][0], yalign=rect_positions[0][1])
-            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[1][0], yalign=rect_positions[1][1])
-            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[2][0], yalign=rect_positions[2][1])
-            # add Solid(color="#672c2c", xsize=50, ysize=50, xalign=rect_positions[3][0], yalign=rect_positions[3][1])
         
-        for xalign, yalign in rect_positions:
-            add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
+        if change_rectone_visibility == True:
+            for xalign, yalign in rect_positions:
+                add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
 
         python:        
         
@@ -314,13 +270,16 @@ screen hamster_cage:
             n_pressed = False
 
 
-            # if len(selected_rects) == 2:
-            #     if selected_rects[0]["path"] == selected_rects[1]["path"]:
-            #         renpy.notify("you found same sounds")
-            #         for selected_rect in selected_rects:
-            #             if selected_rect in rectangles:
-            #                 rectangles.remove(selected_rect)
-            #         selected_rects.clear()
+            if len(selected_rects) == 2:
+                if selected_rects[0].path == selected_rects[1].path:
+                    renpy.notify("you found same sounds")
+                    for selected_rect in selected_rects:
+                        if selected_rect in Rectangle.instances:
+                            selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
+                            renpy.music.stop(channel=collision_channel)
+                    selected_rects.clear()
+            
+
 
 
     # Continue with your Ren'Py story script here.

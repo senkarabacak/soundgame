@@ -1,26 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 186, in script
+  File "game/script.rpy", line 198, in script
     call screen hamster_cage
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/script.rpy", line 224, in execute
+  File "game/script.rpy", line 230, in execute
     screen hamster_cage:
-  File "game/script.rpy", line 224, in execute
+  File "game/script.rpy", line 230, in execute
     screen hamster_cage:
-  File "game/script.rpy", line 225, in execute
+  File "game/script.rpy", line 231, in execute
     frame:
-  File "game/script.rpy", line 257, in execute
+  File "game/script.rpy", line 245, in execute
     python:
-  File "game/script.rpy", line 264, in <module>
-    renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
-AttributeError: module 'renpy.exports' has no attribute 'add'
+  File "game/script.rpy", line 285, in <module>
+    selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
+  File "game/script.rpy", line 97, in remove_instance_by_position
+    cls.remove_instance(instance)
+AttributeError: type object 'Rectangle' has no attribute 'remove_instance'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 186, in script
+  File "game/script.rpy", line 198, in script
     call screen hamster_cage
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
     self.call("execute")
@@ -52,19 +54,21 @@ Full traceback:
     self.update()
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
     self.screen.function(**self.scope)
-  File "game/script.rpy", line 224, in execute
+  File "game/script.rpy", line 230, in execute
     screen hamster_cage:
-  File "game/script.rpy", line 224, in execute
+  File "game/script.rpy", line 230, in execute
     screen hamster_cage:
-  File "game/script.rpy", line 225, in execute
+  File "game/script.rpy", line 231, in execute
     frame:
-  File "game/script.rpy", line 257, in execute
+  File "game/script.rpy", line 245, in execute
     python:
-  File "game/script.rpy", line 264, in <module>
-    renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
-AttributeError: module 'renpy.exports' has no attribute 'add'
+  File "game/script.rpy", line 285, in <module>
+    selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
+  File "game/script.rpy", line 97, in remove_instance_by_position
+    cls.remove_instance(instance)
+AttributeError: type object 'Rectangle' has no attribute 'remove_instance'
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 soundgame 1.0
-Mon Apr 29 19:13:55 2024
+Mon Apr 29 22:17:46 2024

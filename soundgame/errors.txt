@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 243: frame expects a non-empty block.
-    if change_rectone_visibility == True:        
-                                                 ^
+File "game/script.rpy", line 182: invalid syntax
+                    print(pos)
+                     ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Mon Apr 29 19:13:40 2024
+Mon Apr 29 21:22:12 2024
