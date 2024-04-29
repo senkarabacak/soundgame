@@ -20,7 +20,7 @@ define config.name = _("soundgame")
 
 define gui.show_name = True
 
-
+#define config.manage_gc = False
 ## The version of the game.
 
 define config.version = "1.0"

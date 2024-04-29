@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 78: expected an indented block
-        screen_width = renpy.config.screen_width
-         ^
+File "game/script.rpy", line 207: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sat Apr 20 15:03:13 2024
+Sun Apr 28 23:28:32 2024
