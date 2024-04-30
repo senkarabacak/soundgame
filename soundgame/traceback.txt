@@ -1,24 +1,49 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 188, in script
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-Exception: Sayer 'e' is not defined.
+  File "game/script.rpy", line 220, in script
+    call screen hamster_cage
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+OSError: Couldn't find file 'sounds/bird002.wav'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 188, in script
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 2557, in execute
-    Say.execute(self)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 575, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 464, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'e' is not defined.
+  File "game/script.rpy", line 220, in script
+    call screen hamster_cage
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
+    self.call("execute")
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\exports.py", line 3413, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 3022, in interact_core
+    renpy.audio.audio.periodic()
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1205, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1183, in periodic_thread_main
+    periodic_pass()
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1125, in periodic_pass
+    c.periodic()
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 534, in periodic
+    topf = load(filename)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 72, in load
+    rv = renpy.loader.load(fn, directory="audio")
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\loader.py", line 672, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'sounds/bird002.wav'.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 soundgame 1.0
-Mon Apr 29 23:51:04 2024
+Tue Apr 30 21:22:00 2024

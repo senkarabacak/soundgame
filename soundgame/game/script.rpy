@@ -1,13 +1,12 @@
 ﻿
-image hamster = Solid(color="#ffffff",  xsize=50, ysize=50)
-# image rectone = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.4, yalign=0.3)
-# image recttwo = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.2, yalign=0.2)
-# image rectthree = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.5, yalign=0.8)
-# image rectfour = Solid(color="#672c2c",  xsize=50, ysize=50, xalign=0.6, yalign=0.6)
-define e = Character("Eileen", who_color="#c8ffc8")
+#image hamster = Solid(color="#ffffff",  xsize=50, ysize=50)
+
+default hamster_color = "#000000"  # default color is white
 
 #define sound_collision = "sounds/sinister.mp3"
-default change_rectone_visibility = False
+default change_visibility = False
+default change_hasmter_visibility = False
+
 default rectangle_selected = False
 define level_one_start = False
 define level_two_start = False
@@ -47,6 +46,12 @@ init  python:
     k_pressed = False
     n_pressed = False
     selected_rects = []
+    bird_sounds = [
+    "sounds/bird001.mp3",
+    "sounds/bird002.mp3",
+    "sounds/bird003.mp3",
+    "sounds/bird004.mp3"
+    ]
     list
     class Coordinate:
         def __init__(self,x,y,xmin,ymin,xmax,ymax):
@@ -149,9 +154,7 @@ init  python:
         return positions
 
 
-    def testFunc():
-        
-            renpy.jump("level_two")
+
         
 
     hamster_coordinate=Coordinate(0.5,0.5,0.05,0.05,0.95,0.95)
@@ -183,7 +186,7 @@ label start:
 
     alt "this is soundgame"
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    "Once you add a story, pictures, and music, you can release it to the world!"
     #show screen level_display
 
 
@@ -192,21 +195,21 @@ label level_one:
     #show screen timerFame(10, "level_two")
 
     
-
+    play music "sounds/jungle.mp3" loop
    
     python:
         
-            rect_positions = generate_non_overlapping_positions(2, (0.05, 0.05))
+            rect_positions = generate_non_overlapping_positions(6, (0.05, 0.05))
             
             print(rect_positions)
-  
+            k = 0
             for i, pos in enumerate(rect_positions):
-                    Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+                    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
+                    if i % 2 == 1 : k += 1 
  
-    call screen hamster_cage   
-    if not instances:
-        hide screen hamster_cage
-        jump level_two
+    call screen hamster_cage  
+    #stop music "sounds/jungle.mp3"
+
 
 
 label level_two:
@@ -216,7 +219,7 @@ label level_two:
             rect_positions = generate_non_overlapping_positions(6, (0.05, 0.05))            
             print(rect_positions)
             rectangles = [
-                Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+                Rectangle(100, 100, pos[0], pos[1], bird_sounds[i % len(bird_sounds)]).render()
                 for i, pos in enumerate(rect_positions)
             ]
 
@@ -228,7 +231,7 @@ label level_three:
             rect_positions = generate_non_overlapping_positions(8, (0.05, 0.05))            
             print(rect_positions)
             rectangles = [
-                Rectangle(100, 100, pos[0], pos[1], "sounds/sinister.mp3" if i < 2 else "sounds/biolife.mp3").render()
+                Rectangle(100, 100, pos[0], pos[1], bird_sounds[i % len(bird_sounds)]).render()
                 for i, pos in enumerate(rect_positions)
             ]
           
@@ -240,10 +243,14 @@ label after:
 
 screen hamster_cage:  
     if not instances:
-        text "click anywhere"
+        text "press space button to continue"
     frame:
-        add "hamster" anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)  
-        key "g" action ToggleVariable("change_rectone_visibility")    
+        add Solid(color=hamster_color, xsize=50, ysize=50, xalign=0.5, yalign=0.5) anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)
+        key "h" action SetVariable("hamster_color", "#000000" if hamster_color == "#ffffff" else "#ffffff")
+
+        #add "hamster" anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)  
+        key "g" action ToggleVariable("change_visibility")
+        #key "h" action ToggleVariable("change_hamster_visibility")    
         key "n" action SetLocalVariable("n_pressed",  True)
         key "focus_left" action SetField(hamster_coordinate,"xoffset",-0.005)
         key "focus_right" action SetField(hamster_coordinate,"xoffset",+0.005)
@@ -251,12 +258,18 @@ screen hamster_cage:
         key "focus_down" action SetField(hamster_coordinate,"yoffset",+0.005)
         key "dismiss" action Return("hamster")
         
-        if change_rectone_visibility == True:
+        if change_visibility == True:
             for xalign, yalign in rect_positions:
                 add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
 
-        # if not instances:
-        #     text "Click anywhere on this frame to hide the hamster cage."
+        
+        # if change_hamster_visibility == True:
+        #         add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
+
+
+
+        
+
 
         python:        
         
