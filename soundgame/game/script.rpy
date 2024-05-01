@@ -8,7 +8,7 @@ default change_hasmter_visibility = False
 default rectangle_selected = False
 define level_one_start = False
 define level_two_start = False
-define config.log = "mylogs.txt"
+#define config.log = "mylogs.txt"
 default g_time = 0
 default rect_positions = []
 define instances = []
@@ -260,9 +260,9 @@ screen hamster_cage(max, endup):
                         rect.music_started = True
 
                     if n_pressed:
-                        renpy.log("The 'n' key was pressed!")
+                        #renpy.log("The 'n' key was pressed!")
                         selected_rects.append(rect)
-                        renpy.log(selected_rects)
+                        #renpy.log(selected_rects)
                         renpy.notify("take bird")
                         n_pressed = False
                 else:                     
