@@ -38,7 +38,7 @@ jobs:
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        ./renpy.sh launcher web_build ../soundgame/ --destination .
+        sudo ./renpy.sh launcher web_build ../soundgame/ --destination .
         cd ..
         
         unzip ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
