@@ -33,12 +33,12 @@ jobs:
     - name: Build Game
       run: |
         echo "Starting Ren'Py build"
-        cd renpy-8.2.1-sdk/
+        #cd renpy-8.2.1-sdk/
         # ./renpy.sh launcher distribute ../soundgame --platform web
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        ./renpy.sh launcher web_build ../soundgame/ --destination ../
+        ./renpy-8.2.1-sdk/renpy.sh launcher web_build soundgame/ --destination .
         cd ..
         ls
         unzip ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
