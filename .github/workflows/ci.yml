@@ -40,7 +40,7 @@ jobs:
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../soundgame
+        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../.
         ls
         cd ..
         
