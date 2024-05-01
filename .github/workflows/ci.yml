@@ -74,7 +74,7 @@ jobs:
 
     - name: Deploy to itch.io
       run: |
-        ./butler push web_build/* dnzsnkrbck/ninjahamster:html
+        ./butler push web_build/web_build.zip dnzsnkrbck/ninjahamster:html
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
