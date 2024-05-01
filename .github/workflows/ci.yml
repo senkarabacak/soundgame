@@ -35,12 +35,12 @@ jobs:
         echo "Starting Ren'Py build"
         cd renpy-8.2.1-sdk/
         # mkdir -p /home/runner/work/soundgame/soundgame/renpy-8.2.1-sdk/launcher/game/saves
-        # sudo chmod -R 777 /home/runner/work/soundgame/soundgame/renpy-8.2.1-sdk/launcher/game/saves
+        sudo chmod -R 777 .
         # ./renpy.sh launcher distribute ../soundgame --platform web
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        ./renpy.sh launcher web_build ../soundgame/ --destination ../soundgame
+        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../soundgame
         ls
         cd ..
         

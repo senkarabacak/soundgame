@@ -13,6 +13,11 @@ default g_time = 0
 default rect_positions = []
 define instances = []
 default level_counter = 0
+define config.has_autosave = False
+
+define config.has_quicksave = False
+
+
 
 init  python:
     import pygame
