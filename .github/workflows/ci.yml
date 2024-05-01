@@ -66,7 +66,7 @@ jobs:
 
     - name: Deploy to itch.io
       run: |
-        ./butler push output_build dnzsnkrbck/ninjahamster:html
+        ./butler push output_build/game.zip dnzsnkrbck/ninjahamster:html
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
