@@ -30,59 +30,73 @@ jobs:
         python -m pip install pygame
         tar -jxvf renpy-8.2.1-sdk.tar.bz2
 
-    - name: Build Game
-      run: |
-        echo "Starting Ren'Py build"
-        mkdir output_build
-        sudo chmod -R 777 .
-        cd renpy-8.2.1-sdk/
-        
-        #sudo chmod -R 777 output_build
-        # ./renpy.sh launcher distribute ../soundgame --platform web
-        # ./renpyweb ninja_hamster/ --build
-        ls
-        pwd
-        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
-      continue-on-error: true
 
-
-
-
-    - name: Install Butler
-      run: |
-        curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-        unzip butler.zip
-        chmod +x butler
-
-    - name: Deploy to itch.io
-      run: |
-        ./butler push output_build/game.zip dnzsnkrbck/ninjahamster:html
-      env:
-        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-
-    - name: unzip Game
-      run: |  
-          pwd
-          ls
-          echo "show output folder"
-          cd output_build
-          echo "---"
-          echo "show output folder"
-          ls
-          echo "---"
-          sudo unzip game.zip -d output_build    
-
-
-
-      # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
-
-    - name: Check Directory and Files
-      run: |
-        pwd
-        ls
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+    - name: Install RenPy
+      uses: PaxlavaGames/renpy-install@v0.3.0
       with:
-        name: game
-        path: output_build
+        version: "8.2.0"
+        download_web: "yes"
+
+    - name: Build RenPy
+      uses: PaxlavaGames/renpy-web-build@0.1.2
+      with:
+        path: "./soundgame"
+
+
+
+    # - name: Build Game
+    #   run: |
+    #     echo "Starting Ren'Py build"
+    #     mkdir output_build
+    #     sudo chmod -R 777 .
+    #     cd renpy-8.2.1-sdk/
+        
+    #     #sudo chmod -R 777 output_build
+    #     # ./renpy.sh launcher distribute ../soundgame --platform web
+    #     # ./renpyweb ninja_hamster/ --build
+    #     ls
+    #     pwd
+    #     sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
+    #   continue-on-error: true
+
+
+
+
+    # - name: Install Butler
+    #   run: |
+    #     curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+    #     unzip butler.zip
+    #     chmod +x butler
+
+    # - name: Deploy to itch.io
+    #   run: |
+    #     ./butler push output_build/game.zip dnzsnkrbck/ninjahamster:html
+    #   env:
+    #     BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+
+    # - name: unzip Game
+    #   run: |  
+    #       pwd
+    #       ls
+    #       echo "show output folder"
+    #       cd output_build
+    #       echo "---"
+    #       echo "show output folder"
+    #       ls
+    #       echo "---"
+    #       sudo unzip game.zip -d output_build    
+
+
+
+    #   # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
+
+    # - name: Check Directory and Files
+    #   run: |
+    #     pwd
+    #     ls
+
+    # - name: Upload Artifacts
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: game
+    #     path: output_build
