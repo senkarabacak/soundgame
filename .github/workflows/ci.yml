@@ -51,12 +51,12 @@ jobs:
         pwd
         ls
         echo "show output folder"
-        cd ../output_build
+        cd output_build
         echo "---"
         echo "show output folder"
         ls
         echo "---"
-        unzip output_build/game.zip -d output_build
+        unzip game.zip -d output_build
       # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
     - name: Check Directory and Files
