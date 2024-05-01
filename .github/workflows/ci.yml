@@ -62,7 +62,8 @@ jobs:
     - name: Check Directory and Files
       run: |
         pwd
-        ls
+        ls -lt
+        echo "the other ls web_build"
         ls web_build
 
 
