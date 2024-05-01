@@ -44,7 +44,20 @@ jobs:
         pwd
         sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
       continue-on-error: true
-        
+
+    - name: unzip Game
+      run: |  
+        pwd
+        ls
+        echo "show output folder"
+        cd output_build
+        echo "---"
+        echo "show output folder"
+        ls
+        echo "---"
+        sudo unzip game.zip -d output_build
+
+
     - name: Install Butler
       run: |
         curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
@@ -60,17 +73,7 @@ jobs:
       
 
 
-    - name: unzip Game
-      run: |  
-        pwd
-        ls
-        echo "show output folder"
-        cd output_build
-        echo "---"
-        echo "show output folder"
-        ls
-        echo "---"
-        sudo unzip game.zip -d output_build
+
       # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
     - name: Check Directory and Files
