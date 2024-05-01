@@ -34,7 +34,7 @@ jobs:
       run: |
         echo "Starting Ren'Py build"
         cd renpy-8.2.1-sdk/
-        ./renpy.sh launcher distribute ../soundgame --platform web
+        # ./renpy.sh launcher distribute ../soundgame --platform web
         ./renpyweb ninja_hamster/ --build
         cd ..
         unzip ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
