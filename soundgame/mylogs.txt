@@ -19995,3 +19995,561 @@ The 'n' key was pressed!
 The 'n' key was pressed!
 [<store.Rectangle object at 0x0000000004c7caf0>, <store.Rectangle object at
 0x00000000056bed30>]
+--- Tue Apr 30 21:44:37 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 21:45:40 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 21:47:04 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057665b0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057665b0>, <store.Rectangle object at
+0x0000000005766d60>]
+--- Tue Apr 30 21:51:02 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005743280>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005743280>, <store.Rectangle object at
+0x000000000573a910>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005743280>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005743280>, <store.Rectangle object at
+0x0000000005743370>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000573a910>]
+--- Tue Apr 30 22:06:17 2024
+
+this is soundgame
+
+--- Tue Apr 30 22:08:57 2024
+
+--- Tue Apr 30 22:09:28 2024
+
+this is soundgame
+
+--- Tue Apr 30 22:11:14 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 22:13:00 2024
+
+this is soundgame
+
+--- Tue Apr 30 22:14:37 2024
+
+--- Tue Apr 30 22:15:56 2024
+
+this is soundgame
+
+--- Tue Apr 30 22:16:25 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 22:17:14 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+--- Tue Apr 30 22:17:27 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 22:18:54 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+--- Tue Apr 30 22:21:29 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+--- Tue Apr 30 22:28:12 2024
+
+--- Tue Apr 30 22:28:43 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 23:00:52 2024
+
+this is soundgame
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a21d60>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a21d60>, <store.Rectangle object at
+0x0000000005a211c0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a210d0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a210d0>, <store.Rectangle object at
+0x0000000005a21190>]
+level two
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059beeb0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059beeb0>, <store.Rectangle object at
+0x0000000005931520>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059d1bb0>]
+--- Tue Apr 30 23:25:02 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 23:30:33 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000574fe50>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000574fe50>, <store.Rectangle object at
+0x000000000574f250>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000574f520>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000574f520>, <store.Rectangle object at
+0x000000000574fa90>]
+level two
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059f1a60>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059f1a60>, <store.Rectangle object at
+0x00000000059f1040>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057cac10>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057cac10>, <store.Rectangle object at
+0x000000000574fa60>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059f1af0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000059f1af0>, <store.Rectangle object at
+0x00000000057cad60>]
+level three
+
+--- Tue Apr 30 23:33:21 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069a4c10>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069a4c10>, <store.Rectangle object at
+0x00000000057454f0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069a4c10>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069a4c10>, <store.Rectangle object at
+0x00000000057451f0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005745fa0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005745fa0>, <store.Rectangle object at
+0x00000000057454f0>]
+--- Tue Apr 30 23:34:24 2024
+
+--- Tue Apr 30 23:34:39 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a1baf0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005a1baf0>, <store.Rectangle object at
+0x0000000005776310>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057765b0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057765b0>, <store.Rectangle object at
+0x0000000005776e80>]
+--- Tue Apr 30 23:41:51 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 23:45:43 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c2ecd0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c2ecd0>, <store.Rectangle object at
+0x0000000003c28310>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c28310>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c28310>, <store.Rectangle object at
+0x0000000003c28e50>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c2e6a0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000003c2e6a0>, <store.Rectangle object at
+0x0000000003c2ecd0>]
+level two
+
+--- Tue Apr 30 23:47:12 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056b0250>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056b0250>, <store.Rectangle object at
+0x0000000004bb3f10>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004bb3f10>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004bb3f10>, <store.Rectangle object at
+0x00000000056b0820>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056b0250>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056b0250>, <store.Rectangle object at
+0x00000000056b0520>]
+level two
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056849d0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056849d0>, <store.Rectangle object at
+0x0000000005684340>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056660d0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000056660d0>, <store.Rectangle object at
+0x0000000005684a30>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005666700>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005666700>, <store.Rectangle object at
+0x0000000005666850>]
+level three
+
+--- Tue Apr 30 23:50:29 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e2160>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e2160>, <store.Rectangle object at
+0x0000000005749a90>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005749670>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005749670>, <store.Rectangle object at
+0x0000000005749a90>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e2160>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e2160>, <store.Rectangle object at
+0x00000000057e2190>]
+--- Tue Apr 30 23:56:22 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Tue Apr 30 23:56:52 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2340>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2340>, <store.Rectangle object at
+0x0000000004eb2520>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2520>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2520>, <store.Rectangle object at
+0x0000000004eb2520>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2340>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004eb2340>, <store.Rectangle object at
+0x0000000004eb20a0>]
+level two
+
+--- Wed May  1 00:00:44 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 00:02:35 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+--- Wed May  1 00:04:46 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 00:07:06 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069e92e0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069e92e0>, <store.Rectangle object at
+0x0000000004df8640>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004df8640>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004df8640>, <store.Rectangle object at
+0x000000000578a910>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069e9460>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000069e9460>, <store.Rectangle object at
+0x00000000069e92e0>]
+--- Wed May  1 00:16:51 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 00:18:36 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 00:18:57 2024
+
+level two
+
+--- Wed May  1 00:21:00 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+level three
+
+not finished level
+
+--- Wed May  1 00:21:13 2024
+
+--- Wed May  1 12:04:10 2024
+
+--- Wed May  1 12:04:21 2024
+
+--- Wed May  1 12:04:58 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+level three
+
+--- Wed May  1 12:05:17 2024
+
+--- Wed May  1 12:05:28 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+--- Wed May  1 12:07:50 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 12:08:39 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+--- Wed May  1 12:08:49 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 12:11:22 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+--- Wed May  1 12:14:36 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057fd160>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057fd160>, <store.Rectangle object at
+0x000000000577e5b0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057d4f40>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057d4f40>, <store.Rectangle object at
+0x0000000004d0e400>]
+level two
+
+--- Wed May  1 12:17:15 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005808a00>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000005808a00>, <store.Rectangle object at
+0x00000000057e63a0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057de370>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057de370>, <store.Rectangle object at
+0x00000000057e6f70>]
+level two
+
+level three
+
+--- Wed May  1 12:18:01 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+level two
+
+--- Wed May  1 14:53:36 2024
+
+Once you add a story, pictures, and music, you can release it to the world!
+
+level one
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004ea4940>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004ea4940>, <store.Rectangle object at
+0x00000000057ff5b0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004ea44f0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x0000000004ea44f0>, <store.Rectangle object at
+0x0000000004ea4940>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057ff910>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057ff910>, <store.Rectangle object at
+0x00000000057ff5b0>]
+level two
+
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e1bb0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000057e1bb0>, <store.Rectangle object at
+0x00000000057e1df0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000055812e0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x00000000055812e0>, <store.Rectangle object at
+0x00000000051af460>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000580eee0>]
+The 'n' key was pressed!
+[<store.Rectangle object at 0x000000000580eee0>, <store.Rectangle object at
+0x000000000580e6d0>]
+level three
+

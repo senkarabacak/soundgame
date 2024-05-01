@@ -1,36 +1,18 @@
 ﻿
-#image hamster = Solid(color="#ffffff",  xsize=50, ysize=50)
 
 default hamster_color = "#000000"  # default color is white
 
 #define sound_collision = "sounds/sinister.mp3"
 default change_visibility = False
 default change_hasmter_visibility = False
-
 default rectangle_selected = False
 define level_one_start = False
 define level_two_start = False
-
 define config.log = "mylogs.txt"
-
 default g_time = 0
-
 default rect_positions = []
 define instances = []
-
-screen timerFame(max, endup):
-    frame:
-        xalign 0.9
-        yalign 0.1
-        hbox:
-            timer 0.1 action If(g_time > max, false = SetVariable("g_time", g_time + 0.1), true = [Hide("timerFame"), SetVariable("g_time", 0), Jump("%s"%endup) ]) repeat True
-            bar: #an animated bar top center screen
-                value AnimatedValue(value=g_time, range=max, delay= 0.5)
-                xalign 0.0
-                yalign 0.0
-                xmaximum 200
-
-
+default level_counter = 0
 
 init  python:
     import pygame
@@ -43,6 +25,7 @@ init  python:
         config.tts_voice = "Alex"
     elif renpy.linux:
         config.tts_voice = "english_rp"
+
     k_pressed = False
     n_pressed = False
     selected_rects = []
@@ -83,7 +66,7 @@ init  python:
 
 
     class Rectangle:
-        #instances = []
+        
         instances = instances
 
         def __init__(self, x, y, xalign, yalign, path):
@@ -151,29 +134,13 @@ init  python:
             if attempt == max_attempts:
                 raise Exception("Couldn't place all rectangles without overlap.")
 
-        return positions
-
-
-
-        
+        return positions        
 
     hamster_coordinate=Coordinate(0.5,0.5,0.05,0.05,0.95,0.95)
 
     renpy.music.register_channel("collision_channel", mixer="sfx", loop=False)
 
-# screen level_display():
-#     $ rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))  # assuming each rect is about 10% of screen size
 
-#     # Dynamically create rectangles with positions
-#     for i, pos in enumerate(rect_positions):
-#         x, y, width, height = pos
-#         add Solid(
-#             color="#672c2c",
-#             xsize=width * 800,  # Assuming screen width is 800
-#             ysize=height * 600,  # Assuming screen height is 600
-#             xpos=x * 800,
-#             ypos=y * 600
-#         )
 
 
 
@@ -183,6 +150,8 @@ init  python:
 
 
 label start:
+    #scene foresthamsters
+    scene bg foresthamsters
 
     alt "this is soundgame"
 
@@ -192,23 +161,23 @@ label start:
 
 label level_one:
     "level one"
-    #show screen timerFame(10, "level_two")
+    
 
     
     play music "sounds/jungle.mp3" loop
    
     python:
         
-            rect_positions = generate_non_overlapping_positions(6, (0.05, 0.05))
+            rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))
             
-            print(rect_positions)
             k = 0
             for i, pos in enumerate(rect_positions):
                     Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
                     if i % 2 == 1 : k += 1 
- 
-    call screen hamster_cage  
-    #stop music "sounds/jungle.mp3"
+    #show screen timerFame(100, "level_one")
+    call screen hamster_cage(100, "level_one")  
+    
+
 
 
 
@@ -216,73 +185,67 @@ label level_two:
     "level two"   
     python:
         
-            rect_positions = generate_non_overlapping_positions(6, (0.05, 0.05))            
-            print(rect_positions)
-            rectangles = [
-                Rectangle(100, 100, pos[0], pos[1], bird_sounds[i % len(bird_sounds)]).render()
-                for i, pos in enumerate(rect_positions)
-            ]
+            rect_positions = generate_non_overlapping_positions(6, (0.1, 0.1))            
+            k = 0
+            for i, pos in enumerate(rect_positions):
+                    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
+                    if i % 2 == 1 : k += 1 
+ 
 
-    call screen hamster_cage   
+    #show screen timerFame(100, "level_two")
+    call screen hamster_cage(100, "level_two")   
 
 label level_three:
     "level three"    
     python:        
-            rect_positions = generate_non_overlapping_positions(8, (0.05, 0.05))            
-            print(rect_positions)
-            rectangles = [
-                Rectangle(100, 100, pos[0], pos[1], bird_sounds[i % len(bird_sounds)]).render()
-                for i, pos in enumerate(rect_positions)
-            ]
-          
-    call screen hamster_cage   
+            rect_positions = generate_non_overlapping_positions(8, (0.1, 0.1))            
+            k = 0
+            for i, pos in enumerate(rect_positions):
+                    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
+                    if i % 2 == 1 : k += 1 
+    #show screen timerFame(100, "level_three")
+    call screen hamster_cage(100, "level_three")   
 
-label after: 
-    "not finished level "      
+   
 
 
-screen hamster_cage:  
-    if not instances:
-        text "press space button to continue"
+screen hamster_cage(max, endup):  
+
+
     frame:
-        add Solid(color=hamster_color, xsize=50, ysize=50, xalign=0.5, yalign=0.5) anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)
-        key "h" action SetVariable("hamster_color", "#000000" if hamster_color == "#ffffff" else "#ffffff")
+        xalign 0.9
+        yalign 0.1
+        hbox:
+            timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+            bar:  # Animated bar top center screen
+                value AnimatedValue(value=g_time, range=max, delay=0.5)
+                xalign 0.0
+                yalign 0.0
+                xmaximum 200
+        #key "a" action [SetVariable("g_time", 0), Hide("timerFame")]
+        if not instances:
+            text "press space button to continue"
+            $ g_time = 0
 
-        #add "hamster" anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)  
+        add Solid(color=hamster_color, xsize=100, ysize=100, xalign=0.5, yalign=0.5) anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)
+        key "h" action SetVariable("hamster_color", "#000000" if hamster_color == "#ffffff" else "#ffffff")
         key "g" action ToggleVariable("change_visibility")
-        #key "h" action ToggleVariable("change_hamster_visibility")    
         key "n" action SetLocalVariable("n_pressed",  True)
-        key "focus_left" action SetField(hamster_coordinate,"xoffset",-0.005)
-        key "focus_right" action SetField(hamster_coordinate,"xoffset",+0.005)
-        key "focus_up" action SetField(hamster_coordinate,"yoffset",-0.005)
-        key "focus_down" action SetField(hamster_coordinate,"yoffset",+0.005)
+        
+        # Key action mappings
+        key "focus_left" action [Play("sound", "sounds/walk.mp3"), SetField(hamster_coordinate,"xoffset",-0.040)]
+        key "focus_right" action [Play("sound", "sounds/walk.mp3"), SetField(hamster_coordinate,"xoffset",+0.040)]
+        key "focus_up" action [Play("sound", "sounds/walk.mp3"), SetField(hamster_coordinate,"yoffset",-0.040)]
+        key "focus_down" action [Play("sound", "sounds/walk.mp3"), SetField(hamster_coordinate,"yoffset",+0.040)]
         key "dismiss" action Return("hamster")
         
         if change_visibility == True:
             for xalign, yalign in rect_positions:
-                add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
+                add Solid(color="#672c2c", xsize=100, ysize=100, xalign=xalign, yalign=yalign)
 
-        
-        # if change_hamster_visibility == True:
-        #         add Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign)
-
-
-
-        
-
-
-        python:        
-        
+        python:          
             hamster_rect = pygame.Rect(hamster_coordinate.x * renpy.config.screen_width, hamster_coordinate.y * renpy.config.screen_height, 100, 100)       
             collision_channel = 'collision_channel'
-
-            # for position in rect_positions:
-            #     xalign, yalign = position  # Unpack the position list into xalign and yalign
-            #     renpy.add(renpy.Solid(color="#672c2c", xsize=50, ysize=50, xalign=xalign, yalign=yalign))
-                
-            # if not Rectangle.instances:
-            #     renpy.hide_screen("hamster_cage")
-            #     renpy.jump("level_two")
 
             for rect in Rectangle.instances:
                 print(rect)
@@ -298,7 +261,7 @@ screen hamster_cage:
                         renpy.log("The 'n' key was pressed!")
                         selected_rects.append(rect)
                         renpy.log(selected_rects)
-                        renpy.notify("you have selected the sound")
+                        renpy.notify("take bird")
                         n_pressed = False
                 else:                     
                     if music_started:
@@ -307,19 +270,16 @@ screen hamster_cage:
             
             n_pressed = False
 
-
             if len(selected_rects) == 2:
                 if selected_rects[0].path == selected_rects[1].path:
-                    renpy.notify("you found same sounds")
+                    renpy.notify("found pair")
                     for selected_rect in selected_rects:
                         if selected_rect in Rectangle.instances:
                             selected_rect.remove_instance_by_position(selected_rect.xalign,selected_rect.yalign )
                             renpy.music.stop(channel=collision_channel)
                     selected_rects.clear()
+                else:
+                    selected_rects.clear()
+                    renpy.notify("not the pair, miss the other too.")
 
-            
-            
 
-
-
-    # Continue with your Ren'Py story script here.

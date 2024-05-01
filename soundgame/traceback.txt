@@ -1,16 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 220, in script
+  File "game/script.rpy", line 178, in script
     call screen hamster_cage
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-OSError: Couldn't find file 'sounds/bird002.wav'.
+  File "game/script.rpy", line 228, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 228, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 231, in execute
+    frame:
+  File "game/script.rpy", line 234, in execute
+    hbox:
+  File "game/script.rpy", line 235, in execute
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+  File "game/script.rpy", line 235, in keywords
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+  File "game/script.rpy", line 235, in <module>
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+TypeError: '>' not supported between instances of 'int' and 'builtin_function_or_method'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 220, in script
+  File "game/script.rpy", line 178, in script
     call screen hamster_cage
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
     self.call("execute")
@@ -26,24 +40,39 @@ Full traceback:
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 3022, in interact_core
-    renpy.audio.audio.periodic()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1205, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1183, in periodic_thread_main
-    periodic_pass()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 1125, in periodic_pass
-    c.periodic()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 534, in periodic
-    topf = load(filename)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 72, in load
-    rv = renpy.loader.load(fn, directory="audio")
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\loader.py", line 672, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'sounds/bird002.wav'.
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 228, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 228, in execute
+    screen hamster_cage:
+  File "game/script.rpy", line 231, in execute
+    frame:
+  File "game/script.rpy", line 234, in execute
+    hbox:
+  File "game/script.rpy", line 235, in execute
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+  File "game/script.rpy", line 235, in keywords
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+  File "game/script.rpy", line 235, in <module>
+    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
+TypeError: '>' not supported between instances of 'int' and 'builtin_function_or_method'
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
-soundgame 1.0
-Tue Apr 30 21:22:00 2024
+ninja hamster 1.0
+Wed May  1 12:11:25 2024
