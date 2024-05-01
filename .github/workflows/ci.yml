@@ -33,14 +33,16 @@ jobs:
     - name: Build Game
       run: |
         echo "Starting Ren'Py build"
-        cd renpy-8.2.1-sdk/
         mkdir output_build
-        sudo chmod -R 777 output_build
+        sudo chmod -R 777 .
+        cd renpy-8.2.1-sdk/
+        
+        #sudo chmod -R 777 output_build
         # ./renpy.sh launcher distribute ../soundgame --platform web
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
+        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
       continue-on-error: true
         
         
@@ -54,7 +56,7 @@ jobs:
         echo "show output folder"
         ls
         echo "---"
-        unzip output_build/game.zip -d build_output
+        unzip output_build/game.zip -d output_build
       # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
     - name: Check Directory and Files
