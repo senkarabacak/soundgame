@@ -36,7 +36,7 @@ jobs:
         cd renpy-8.2.1-sdk/
         # ./renpy.sh launcher distribute ../soundgame --platform web
         # ./renpyweb ninja_hamster/ --build
-        ./renpy.sh launcher web_build soundgame/
+        ./renpy.sh launcher web_build ../soundgame/
         cd ..
         unzip ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
         # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
