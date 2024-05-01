@@ -32,13 +32,13 @@ jobs:
 
 
     - name: Install RenPy
-      uses: PaxlavaGames/renpy-install@v0.3.0
+      uses: PaxlavaGames/renpy-install@main
       with:
         version: "8.2.0"
         download_web: "yes"
 
     - name: Build RenPy
-      uses: PaxlavaGames/renpy-web-build@0.1.2
+      uses: PaxlavaGames/renpy-web-build@main
       with:
         path: "./soundgame"
 
