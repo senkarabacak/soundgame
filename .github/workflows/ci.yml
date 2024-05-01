@@ -45,17 +45,7 @@ jobs:
         sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
       continue-on-error: true
 
-    - name: unzip Game
-      run: |  
-        pwd
-        ls
-        echo "show output folder"
-        cd output_build
-        echo "---"
-        echo "show output folder"
-        ls
-        echo "---"
-        sudo unzip game.zip -d output_build
+
 
 
     - name: Install Butler
@@ -70,7 +60,17 @@ jobs:
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
-      
+    - name: unzip Game
+      run: |  
+          pwd
+          ls
+          echo "show output folder"
+          cd output_build
+          echo "---"
+          echo "show output folder"
+          ls
+          echo "---"
+          sudo unzip game.zip -d output_build    
 
 
 
@@ -85,4 +85,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: game
-        path: build_output
+        path: output_build
