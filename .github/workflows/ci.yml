@@ -1,0 +1,50 @@
+name: Build and Deploy Ren'Py Game
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y bzip2 libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0
+
+    - name: Install Pygame
+      run: |
+        wget https://www.renpy.org/dl/8.2.1/renpy-8.2.1-sdk.tar.bz2
+        python -m pip install --upgrade pip
+        python -m pip install pygame
+        tar -jxvf renpy-8.2.1-sdk.tar.bz2
+
+    - name: Build Game
+      run: |
+        echo "Starting Ren'Py build"
+        cd renpy-8.2.1-sdk/
+        ./renpy.sh launcher distribute ../soundgame --platform web
+        cd ..
+        unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
+
+    - name: Check Directory and Files
+      run: |
+        pwd
+        ls
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: game
+        path: build_output
