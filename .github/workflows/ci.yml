@@ -34,17 +34,17 @@ jobs:
       run: |
         echo "Starting Ren'Py build"
         cd renpy-8.2.1-sdk/
-        # mkdir -p /home/runner/work/soundgame/soundgame/renpy-8.2.1-sdk/launcher/game/saves
-        sudo chmod -R 777 .
+        mkdir output_build
+        sudo chmod -R 777 output_build
         # ./renpy.sh launcher distribute ../soundgame --platform web
         # ./renpyweb ninja_hamster/ --build
         ls
         pwd
-        sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../.
+        ./renpy.sh launcher distrubute web_build ../soundgame/ --destination ../output_build
         ls
         cd ..
         
-        unzip ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
+        unzip output_build/game.zip -d build_output
         # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
     - name: Check Directory and Files
