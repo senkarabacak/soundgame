@@ -59,20 +59,24 @@ jobs:
     #     sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
     #   continue-on-error: true
 
+    - name: Check Directory and Files
+      run: |
+        pwd
+        ls
+        ls web_build
 
 
+    - name: Install Butler
+      run: |
+        curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip butler.zip
+        chmod +x butler
 
-    # - name: Install Butler
-    #   run: |
-    #     curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-    #     unzip butler.zip
-    #     chmod +x butler
-
-    # - name: Deploy to itch.io
-    #   run: |
-    #     ./butler push output_build/game.zip dnzsnkrbck/ninjahamster:html
-    #   env:
-    #     BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+    - name: Deploy to itch.io
+      run: |
+        ./butler push web_build/* dnzsnkrbck/ninjahamster:html
+      env:
+        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
     # - name: unzip Game
     #   run: |  
