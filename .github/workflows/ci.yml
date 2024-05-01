@@ -47,6 +47,9 @@ jobs:
     - name: unzip Game
       run: |  
         cd ..
+        echo "show output folder"
+        ls output_build
+        echo "---"
         unzip output_build/game.zip -d build_output
       # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
