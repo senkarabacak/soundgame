@@ -38,31 +38,39 @@ init  python:
     list
     class Coordinate:
         def __init__(self,x,y,xmin,ymin,xmax,ymax):
-
             self.x,self.y,self.xmin,self.ymin,self.xmax,self.ymax=x,y,xmin,ymin,xmax,ymax
-
             self.xoffset,self.yoffset=0,0
-
             return
 
-        def transform(self,d,show_time,animate_time):
+        def transform(self, d, show_time, animate_time):
+            border_hit = False  # To track if the border was hit
 
-            self.x+=self.xoffset
-            self.y+=self.yoffset
-            self.xoffset,self.yoffset=0,0
+            # Apply offset and check borders
+            self.x += self.xoffset
+            self.y += self.yoffset
+            if self.x < self.xmin:
+                self.x = self.xmin
+                border_hit = True
+            if self.y < self.ymin:
+                self.y = self.ymin
+                border_hit = True
+            if self.x > self.xmax:
+                self.x = self.xmax
+                border_hit = True
+            if self.y > self.ymax:
+                self.y = self.ymax
+                border_hit = True
 
-            if self.x<self.xmin:
-                self.x=self.xmin
-            if self.y<self.ymin:
-                self.y=self.ymin
-            if self.x>self.xmax:
-                self.x=self.xmax
-            if self.y>self.ymax:
-                self.y=self.ymax
+            # Reset offsets
+            self.xoffset, self.yoffset = 0, 0
 
-            d.pos=(self.x,self.y)
+            # If border hit, play bump sound
+            if border_hit:
+                renpy.music.play("sounds/walk_bump.mp3", channel="collision_channel")
 
-            return 0   
+            d.pos = (self.x, self.y)
+            return 0
+
 
 
     class Rectangle:
@@ -160,16 +168,11 @@ label start:
 
 
 label level_one:
-    "level one"
-    
-
-    
+    "level one"    
     play music "sounds/jungle.mp3" loop
    
-    python:
-        
-            rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))
-            
+    python:        
+            rect_positions = generate_non_overlapping_positions(4, (0.1, 0.1))            
             k = 0
             for i, pos in enumerate(rect_positions):
                     Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
@@ -183,8 +186,7 @@ label level_one:
 
 label level_two:
     "level two"   
-    python:
-        
+    python:        
             rect_positions = generate_non_overlapping_positions(6, (0.1, 0.1))            
             k = 0
             for i, pos in enumerate(rect_positions):

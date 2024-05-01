@@ -1,31 +1,19 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 178, in script
-    call screen hamster_cage
+  File "game/script.rpy", line 198, in script
+    call screen hamster_cage(100, "level_one")
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/script.rpy", line 228, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 228, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 231, in execute
-    frame:
-  File "game/script.rpy", line 234, in execute
-    hbox:
-  File "game/script.rpy", line 235, in execute
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-  File "game/script.rpy", line 235, in keywords
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-  File "game/script.rpy", line 235, in <module>
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-TypeError: '>' not supported between instances of 'int' and 'builtin_function_or_method'
+  File "game/script.rpy", line 69, in transform
+    renpy.music.play("sounds/walk_bump.mp3", channel="sfx")
+Exception: Audio channel 'sfx' is unknown.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 178, in script
-    call screen hamster_cage
+  File "game/script.rpy", line 198, in script
+    call screen hamster_cage(100, "level_one")
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
     self.call("execute")
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
@@ -40,39 +28,53 @@ Full traceback:
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in interact_core
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\displayable.py", line 431, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 480, in visit_all
-    callback(self)
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2687, in <lambda>
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 491, in per_interact
-    self.update()
-  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 697, in update
-    self.screen.function(**self.scope)
-  File "game/script.rpy", line 228, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 228, in execute
-    screen hamster_cage:
-  File "game/script.rpy", line 231, in execute
-    frame:
-  File "game/script.rpy", line 234, in execute
-    hbox:
-  File "game/script.rpy", line 235, in execute
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-  File "game/script.rpy", line 235, in keywords
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-  File "game/script.rpy", line 235, in <module>
-    timer 0.1 action If(g_time > max, false=SetVariable("g_time", g_time + 0.1), true=[Hide("timerFame"), SetVariable("g_time", 0), Jump("%s" % endup)]) repeat True
-TypeError: '>' not supported between instances of 'int' and 'builtin_function_or_method'
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 2818, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\core.py", line 1352, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 486, in renpy.display.render.render_screen
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\screen.py", line 754, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 1361, in render
+    surf = render(child,
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\transform.py", line 955, in render
+    self.update_state()
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\display\transform.py", line 926, in update_state
+    fr = self.function(self, self.st, self.at)
+  File "game/script.rpy", line 69, in transform
+    renpy.music.play("sounds/walk_bump.mp3", channel="sfx")
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\music.py", line 103, in play
+    c = get_channel(channel)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\audio\audio.py", line 928, in get_channel
+    raise Exception("Audio channel %r is unknown." % name)
+Exception: Audio channel 'sfx' is unknown.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 ninja hamster 1.0
-Wed May  1 12:11:25 2024
+Wed May  1 17:51:08 2024
