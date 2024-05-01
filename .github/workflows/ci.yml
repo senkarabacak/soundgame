@@ -56,7 +56,7 @@ jobs:
         echo "show output folder"
         ls
         echo "---"
-        unzip game.zip -d output_build
+        sudo unzip game.zip -d output_build
       # unzip soundgame/ninja_hamster-1.0-dists/ninja_hamster-1.0-web.zip -d build_output
 
     - name: Check Directory and Files
