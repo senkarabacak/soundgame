@@ -93,7 +93,7 @@ init  python:
             self.rendered = ""
             Rectangle.instances.append(self)
         def __del__(self):
-            print("Destructor called, MyClass deleted.")
+            #print("Destructor called, MyClass deleted.")
 
         @classmethod
         def remove_all_instances(cls):
@@ -255,7 +255,7 @@ screen hamster_cage(max, endup):
             collision_channel = 'collision_channel'
 
             for rect in Rectangle.instances:
-                print(rect)
+                #print(rect)
                 rect = rect
                 music_started = rect.music_started
 
