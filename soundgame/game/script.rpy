@@ -12,16 +12,25 @@ default level_counter = 0
 define config.has_autosave = False
 define config.has_quicksave = False
 
+
+# characters setting are embedded in the renpy, using directly as variable
 define senior_hamster = Character("Master", who_color="#ceffc8")
 define junior_hamster = Character("Junior", who_color="#c8e6ff")
 define tutorial = Character("Tutorial", who_color="#ffc8c8")
 
-
+# python code can be used in renpy but not directly in framework, instead initializing as codeblocks
 init  python:
     
     import pygame
     import random
     import weakref
+
+    ############################################################################################################################
+    #####                                                                                                                  #####
+    #####   Please check into logic.py for game logic and utest.py for unit tests, it will be run by pipeline at github    #####
+    #####                                                                                                                  #####
+    ############################################################################################################################
+
 
     from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect, render_rectangles
 
@@ -49,13 +58,6 @@ init  python:
     hamster_coordinate=Coordinate(0.5,0.5,0.05,0.05,0.95,0.95)
 
     renpy.music.register_channel("collision_channel", mixer="sfx", loop=False)
-
-
-
-
-
-
-
 
 
 
