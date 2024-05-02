@@ -54,11 +54,12 @@ jobs:
           path: web_build.zip
 
 
-    # - name: Build Game
-    #   run: |
-    #     mkdir output_build
-    #     ./renpy-8.2.1-sdk/renpy.sh launcher distribute soundgame --destination output_build
-    #     ls output
+    - name: Build Game
+      run: |
+        mkdir output_build
+        cd renpy-8.2.1-sdk
+        ./renpy.sh launcher distribute ../soundgame --destination ../output_build
+        cd ..
       
 
 
