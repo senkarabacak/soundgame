@@ -1,27 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 236, in script
-    python:
-  File "game/script.rpy", line 240, in <module>
-    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
-NameError: name 'calculate_rendered_rect' is not defined
+  File "game/script.rpy", line 20, in script
+    init  python:
+  File "game/script.rpy", line 29, in <module>
+    from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect, render_rectangle
+ImportError: cannot import name 'render_rectangle' from 'logic' (C:\Users\DenizSenkarabacak\Documents\soundgame\soundgame\game/logic.py)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 236, in script
-    python:
+  File "game/script.rpy", line 20, in script
+    init  python:
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 823, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\python.py", line 1178, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 240, in <module>
-    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
-  File "logic.py", line 81, in __init__
-NameError: name 'calculate_rendered_rect' is not defined
+  File "game/script.rpy", line 29, in <module>
+    from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect, render_rectangle
+ImportError: cannot import name 'render_rectangle' from 'logic' (C:\Users\DenizSenkarabacak\Documents\soundgame\soundgame\game/logic.py)
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 ninja hamster 1.0
-Thu May  2 14:09:50 2024
+Thu May  2 17:08:22 2024

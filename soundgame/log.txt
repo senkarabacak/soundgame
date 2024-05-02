@@ -1,20 +1,34 @@
-2024-05-02 12:20:57 UTC
+2024-05-02 15:08:21 UTC
 Windows-10-10.0.22631
 Ren'Py 8.2.1.24030407
 
-Early init took 0.07s
-Loading error handling took 0.03s
-Loading script took 0.17s
-Loading save slot metadata took 0.03s
+Early init took 0.05s
+Loading error handling took 0.05s
+Loading script took 0.34s
+Loading save slot metadata took 0.10s
 Loading persistent took 0.00s
 
-File "game/script.rpy", line 35: unexpected indent
-        screen_width = renpy.config.screen_width
-        ^
+Full traceback:
+  File "game/script.rpy", line 20, in script
+    init  python:
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\DenizSenkarabacak\Desktop\renpy-8.2.1-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 29, in <module>
+    from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect, render_rectangle
+ImportError: cannot import name 'render_rectangle' from 'logic' (C:\Users\DenizSenkarabacak\Documents\soundgame\soundgame\game/logic.py)
+
+While running game code:
+  File "game/script.rpy", line 20, in script
+    init  python:
+  File "game/script.rpy", line 29, in <module>
+    from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect, render_rectangle
+ImportError: cannot import name 'render_rectangle' from 'logic' (C:\Users\DenizSenkarabacak\Documents\soundgame\soundgame\game/logic.py)
 DPI scale factor: 1.250000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 0.08s
+Interface start took 0.21s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -27,15 +41,39 @@ Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1715, 965) drawable=(1715, 965)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 13.38s
-Loading error handling took 0.02s
+Early init took 22.68s
+Loading error handling took 0.01s
 Loading script took 0.11s
 Loading save slot metadata took 0.02s
 Loading persistent took 0.00s
-Running init code took 0.04s
-Loading analysis data took 0.01s
+
+File "game/script.rpy", line 29: invalid syntax
+    from logic 
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon (TM) Graphics'
+Version: b'4.6.0 Compatibility Profile Context 23.10.24.09.231206'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1715, 965) drawable=(1715, 965)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 31.33s
+Loading error handling took 0.01s
+Loading script took 0.11s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.02s
+Reloading save slot metadata took 0.08s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\DenizSenkarabacak\\AppData\\Roaming/RenPy/backups\\soundgame':
 Dump and make backups took 0.04s
@@ -49,14 +87,14 @@ Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.03s
 Build styles took 0.00s
-Load screen analysis took 0.00s
+Load screen analysis took 0.01s
 Analyze screens took 0.01s
-Save screen analysis took 0.02s
+Save screen analysis took 0.01s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.01s
 Save bytecode. took 0.01s
 Running _start took 0.00s
-Interface start took 0.05s
+Interface start took 0.04s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -68,3 +106,10 @@ Version: b'4.6.0 Compatibility Profile Context 23.10.24.09.231206'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1715, 965) drawable=(1715, 965)
 Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

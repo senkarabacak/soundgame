@@ -4,6 +4,14 @@
 import random
 import pygame
 
+
+def render_rectangles(num_rectangles, positions, sounds):
+        k = 0
+        for i, pos in enumerate(positions):
+            Rectangle(100, 100, pos[0], pos[1], sounds[k]).render()
+            if i % 2 == 1:
+                k += 1
+
 class Coordinate:
         def __init__(self,x,y,xmin,ymin,xmax,ymax):
             self.x,self.y,self.xmin,self.ymin,self.xmax,self.ymax=x,y,xmin,ymin,xmax,ymax

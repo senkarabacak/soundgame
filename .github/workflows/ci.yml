@@ -74,15 +74,4 @@ jobs:
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
-    # - name: unzip Game
-    #   run: |  
-    #       sudo unzip game.zip -d output_build    
 
-
-
-
-    # - name: Upload Artifacts
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: game
-    #     path: output_build
