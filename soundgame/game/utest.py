@@ -12,7 +12,7 @@ class TestRectangle(unittest.TestCase):
         Rectangle.remove_instance_by_position(0.5, 0.5)
         self.assertEqual(len(Rectangle.instances), initial_count - 1)
 
-    # Add more test cases as needed
+
 
 class TestGenerateNonOverlappingPositions(unittest.TestCase):
     def test_positions_count(self):
@@ -25,13 +25,20 @@ class TestGenerateNonOverlappingPositions(unittest.TestCase):
             for pos2 in positions[i + 1:]:
                 self.assertFalse(self.check_overlap(pos1, pos2))
 
+    def test_positions_format(self):
+        positions = generate_non_overlapping_positions(5, (0.1, 0.1))
+        for pos in positions:
+            self.assertIsInstance(pos, tuple)
+            self.assertEqual(len(pos), 2)
+            self.assertIsInstance(pos[0], float)
+            self.assertIsInstance(pos[1], float)
+
     def check_overlap(self, pos1, pos2):
         x1, y1 = pos1
         x2, y2 = pos2
         width, height = 0.1, 0.1
         return not (x1 + width < x2 or x2 + width < x1 or y1 + height < y2 or y2 + height < y1)
 
-    # Add more test cases as needed
 
 if __name__ == "__main__":
     unittest.main()
