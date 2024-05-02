@@ -37,6 +37,11 @@ jobs:
         version: "8.2.0"
         download_web: "yes"
 
+
+    - name: Run unit tests
+      run: |
+          python soundgame/game/utest.py
+
     - name: Build RenPy
       uses: PaxlavaGames/renpy-web-build@main
       with:

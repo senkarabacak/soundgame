@@ -11,7 +11,7 @@ define level_two_start = False
 
 default g_time = 0
 default rect_positions = []
-define instances = []
+#define instances = []
 default level_counter = 0
 define config.has_autosave = False
 
@@ -22,13 +22,18 @@ define junior_hamster = Character("Junior", who_color="#c8e6ff")
 
 
 init  python:
-
-    # from gamelogic import Coordinate, Rectangle, generate_non_overlapping_positions
-
-
+    
     import pygame
     import random
     import weakref
+
+
+
+
+    from logic import Coordinate, Rectangle, generate_non_overlapping_positions, calculate_rendered_rect
+
+        # screen_width = renpy.config.screen_width
+        # screen_height = renpy.config.screen_height
 
     if renpy.windows:
         config.tts_voice = "Mark"
@@ -47,115 +52,123 @@ init  python:
     "sounds/bird004.mp3"
     ]
     list
-    class Coordinate:
-        def __init__(self,x,y,xmin,ymin,xmax,ymax):
-            self.x,self.y,self.xmin,self.ymin,self.xmax,self.ymax=x,y,xmin,ymin,xmax,ymax
-            self.xoffset,self.yoffset=0,0
-            self.border_hit = False
-            return
-
-        def transform(self, d, show_time, animate_time):
-            # To track if the border was hit
-            self.border_hit = False
-
-            # Apply offset and check borders
-            self.x += self.xoffset
-            self.y += self.yoffset
-            if self.x < self.xmin:
-                self.x = self.xmin
-                self.border_hit = True
-            if self.y < self.ymin:
-                self.y = self.ymin
-                self.border_hit = True
-            if self.x > self.xmax:
-                self.x = self.xmax
-                self.border_hit = True
-            if self.y > self.ymax:
-                self.y = self.ymax
-                self.border_hit = True
-
-            # Reset offsets
-            self.xoffset, self.yoffset = 0, 0
 
 
-            d.pos = (self.x, self.y)
-            return self.border_hit
+    # class Coordinate:
+    #     def __init__(self,x,y,xmin,ymin,xmax,ymax):
+    #         self.x,self.y,self.xmin,self.ymin,self.xmax,self.ymax=x,y,xmin,ymin,xmax,ymax
+    #         self.xoffset,self.yoffset=0,0
+    #         self.border_hit = False
+    #         return
+
+    #     def transform(self, d, show_time, animate_time):
+    #         # To track if the border was hit
+    #         self.border_hit = False
+
+    #         # Apply offset and check borders
+    #         self.x += self.xoffset
+    #         self.y += self.yoffset
+    #         if self.x < self.xmin:
+    #             self.x = self.xmin
+    #             self.border_hit = True
+    #         if self.y < self.ymin:
+    #             self.y = self.ymin
+    #             self.border_hit = True
+    #         if self.x > self.xmax:
+    #             self.x = self.xmax
+    #             self.border_hit = True
+    #         if self.y > self.ymax:
+    #             self.y = self.ymax
+    #             self.border_hit = True
+
+    #         # Reset offsets
+    #         self.xoffset, self.yoffset = 0, 0
 
 
+    #         d.pos = (self.x, self.y)
+    #         return self.border_hit
 
-    class Rectangle:
+    # def calculate_rendered_rect(xalign, yalign, x, y):
+    #     screen_width = renpy.config.screen_width
+    #     screen_height = renpy.config.screen_height
+    #     top_left_x = xalign * screen_width
+    #     top_left_y = yalign * screen_height
+    #     return pygame.Rect(top_left_x, top_left_y, x, y)
+
+    # class Rectangle:        
+    #     instances = []
+
+    #     def __init__(self, x, y, xalign, yalign, path):
+    #         self.x = x
+    #         self.y = y
+    #         self.xalign = xalign
+    #         self.yalign = yalign
+    #         self.path = path
+    #         self.music_started = False
+    #         self.is_found = False
+    #         #self.rendered = ""
+    #         self.rendered = calculate_rendered_rect(xalign, yalign, x, y)  # Calculate rendered rectangle
+
+    #         Rectangle.instances.append(self)
         
-        instances = instances
+    #     def __del__(self):
+    #         pass
+    #         #print("Destructor called, MyClass deleted.")
 
-        def __init__(self, x, y, xalign, yalign, path):
-            self.x = x
-            self.y = y
-            self.xalign = xalign
-            self.yalign = yalign
-            self.path = path
-            self.music_started = False
-            self.is_found = False
-            self.rendered = ""
-            Rectangle.instances.append(self)
-        
-        def __del__(self):
-            pass
-            #print("Destructor called, MyClass deleted.")
+    #     @classmethod
+    #     def remove_all_instances(cls):
+    #         while cls.instances:
+    #             cls.instances.pop()  # Each pop should eventually trigger __del__()
 
-        @classmethod
-        def remove_all_instances(cls):
-            while cls.instances:
-                cls.instances.pop()  # Each pop should eventually trigger __del__()
+    #     @classmethod
+    #     def remove_instance(cls, instance):
+    #         if instance in cls.instances:
+    #             cls.instances.remove(instance)
+    #             del instance  # Optionally delete the object; __del__ will be called
 
-        @classmethod
-        def remove_instance(cls, instance):
-            if instance in cls.instances:
-                cls.instances.remove(instance)
-                del instance  # Optionally delete the object; __del__ will be called
+    #     @classmethod
+    #     def remove_instance_by_position(cls, xalign, yalign):
+    #         for instance in list(cls.instances):
+    #             if instance.xalign == xalign and instance.yalign == yalign:
+    #                 cls.remove_instance(instance)
+    #                 break  # Break after removing to avoid modifying list during iteration if only one is to be removed
 
-        @classmethod
-        def remove_instance_by_position(cls, xalign, yalign):
-            for instance in list(cls.instances):
-                if instance.xalign == xalign and instance.yalign == yalign:
-                    cls.remove_instance(instance)
-                    break  # Break after removing to avoid modifying list during iteration if only one is to be removed
-
-        def render(self):
-        # Calculate the top-left corner based on alignment and size
-            screen_width = renpy.config.screen_width
-            screen_height = renpy.config.screen_height
-            top_left_x = self.xalign * screen_width
-            top_left_y = self.yalign * screen_height
-            self.rendered = pygame.Rect(top_left_x, top_left_y, self.x, self.y)
-            #return #pygame.Rect(top_left_x, top_left_y, self.x, self.y)
-            pass
+    #     def render(self):
+    #     # Calculate the top-left corner based on alignment and size
+    #         # screen_width = renpy.config.screen_width
+    #         # screen_height = renpy.config.screen_height
+    #         # top_left_x = self.xalign * screen_width
+    #         # top_left_y = self.yalign * screen_height
+    #         # self.rendered = pygame.Rect(top_left_x, top_left_y, self.x, self.y)
+    #         # #return #pygame.Rect(top_left_x, top_left_y, self.x, self.y)
+    #         pass
    
 
-    def generate_non_overlapping_positions(count, rect_size):
-        max_attempts = 100
-        positions = []
-        width, height = rect_size
+    # def generate_non_overlapping_positions(count, rect_size):
+    #     max_attempts = 100
+    #     positions = []
+    #     width, height = rect_size
 
-        def overlaps(new_rect, rects):
-            nx, ny = new_rect
-            nw, nh = width, height
-            for x, y in rects:
-                if not (x + width < nx or nx + nw < x or y + height < ny or ny + nh < y):
-                    return True
-            return False
+    #     def overlaps(new_rect, rects):
+    #         nx, ny = new_rect
+    #         nw, nh = width, height
+    #         for x, y in rects:
+    #             if not (x + width < nx or nx + nw < x or y + height < ny or ny + nh < y):
+    #                 return True
+    #         return False
 
-        while len(positions) < count:
-            attempt = 0
-            while attempt < max_attempts:
-                new_position = (random.uniform(0, 1 - width), random.uniform(0, 1 - height))
-                if not overlaps(new_position, positions):
-                    positions.append(new_position)
-                    break
-                attempt += 1
-            if attempt == max_attempts:
-                raise Exception("Couldn't place all rectangles without overlap.")
+    #     while len(positions) < count:
+    #         attempt = 0
+    #         while attempt < max_attempts:
+    #             new_position = (random.uniform(0, 1 - width), random.uniform(0, 1 - height))
+    #             if not overlaps(new_position, positions):
+    #                 positions.append(new_position)
+    #                 break
+    #             attempt += 1
+    #         if attempt == max_attempts:
+    #             raise Exception("Couldn't place all rectangles without overlap.")
 
-        return positions        
+    #     return positions        
 
     hamster_coordinate=Coordinate(0.5,0.5,0.05,0.05,0.95,0.95)
 
@@ -222,7 +235,7 @@ label tutorial_play:
                     Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
                     if i % 2 == 1 : k += 1 
     #show screen timerFame(100, "level_one")
-    call screen hamster_cage(100, "level_one")  
+    call screen hamster_cage(100, "tutorial_play")  
 
 
 
@@ -284,8 +297,8 @@ screen hamster_cage(max, endup):
                 yalign 0.0
                 xmaximum 200
         #key "a" action [SetVariable("g_time", 0), Hide("timerFame")]
-        if not instances:
-            text "press space button to continue"
+        if not Rectangle.instances: 
+            text "press space button to continue" 
             $ g_time = 0
 
         add Solid(color=hamster_color, xsize=100, ysize=100, xalign=0.5, yalign=0.5) anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)
@@ -312,7 +325,9 @@ screen hamster_cage(max, endup):
             
             collision_channel = 'collision_channel'
            
-
+            # if not Rectangle.instances:
+            #     renpy.notify("press space button to continue")
+            #     g_time = 0
             #if hamster_rect.border_hit:
             #       renpy.music.play("sounds/walk_bump.mp3", channel="collision_channel")
 
