@@ -191,10 +191,20 @@ screen hamster_cage(max, endup):
                         renpy.music.play(rect.path, channel=collision_channel, loop=True)
                         rect.music_started = True
 
-                    if n_pressed:                        
-                        selected_rects.append(rect)                        
-                        renpy.notify("catch bird")
+                    if n_pressed:
+                        if len(selected_rects) == 0:
+                            selected_rects.append(rect)
+                            renpy.notify("catch bird")
+                        elif len(selected_rects) == 1 and rect != selected_rects[0]:
+                            selected_rects.append(rect)
+                            renpy.notify("catch bird")
+                        elif len(selected_rects) == 1 and rect == selected_rects[0]:
+                            renpy.notify("cannot catch the same bird")
+                        else:
+                            renpy.notify("already selected two birds")
                         n_pressed = False
+
+                        
                 else:                     
                     if music_started:
                         renpy.music.stop(channel=collision_channel)
@@ -203,7 +213,7 @@ screen hamster_cage(max, endup):
             n_pressed = False
 
             # checking matches of pair
-            if len(selected_rects) == 2:
+            if len(selected_rects) == 2 :
                 if selected_rects[0].path == selected_rects[1].path:
                     renpy.notify("found pair")
                     for selected_rect in selected_rects:
