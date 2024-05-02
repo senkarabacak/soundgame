@@ -1,0 +1,46 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 195: expected statement.
+    nvl "Use the arrow keys to navigate – up, down, left, and right."
+       ^
+
+File "game/script.rpy", line 196: expected statement.
+    nvl "Should you collide with the forest's borders, you'll hear a bump."
+       ^
+
+File "game/script.rpy", line 197: expected statement.
+    nvl "Upon encountering a bird, you'll recognize its call."
+       ^
+
+File "game/script.rpy", line 198: expected statement.
+    nvl "Press 'n' to capture a bird when you hear it."
+       ^
+
+File "game/script.rpy", line 199: expected statement.
+    nvl "But remember, you must find its mate."
+       ^
+
+File "game/script.rpy", line 200: expected statement.
+    nvl "Capture both matching bird sounds by pressing 'n'."
+       ^
+
+File "game/script.rpy", line 201: expected statement.
+    nvl "Successful matches result in their expulsion from the forest."
+       ^
+
+File "game/script.rpy", line 202: expected statement.
+    nvl "Failed attempts return them to their original spots."
+       ^
+
+File "game/script.rpy", line 203: expected statement.
+    nvl "You also have a 60-minute time limit, shown in the top left corner."
+       ^
+
+File "game/script.rpy", line 204: expected statement.
+    nvl "Press 'h' to reveal your hamster's position, and 'g' to locate the birds."
+       ^
+
+Ren'Py Version: Ren'Py 8.2.1.24030407
+Thu May  2 12:07:34 2024

@@ -17,9 +17,15 @@ define config.has_autosave = False
 
 define config.has_quicksave = False
 
+define senior_hamster = Character("Master", who_color="#ceffc8")
+define junior_hamster = Character("Junior", who_color="#c8e6ff")
 
 
 init  python:
+
+    # from gamelogic import Coordinate, Rectangle, generate_non_overlapping_positions
+
+
     import pygame
     import random
     import weakref
@@ -45,36 +51,35 @@ init  python:
         def __init__(self,x,y,xmin,ymin,xmax,ymax):
             self.x,self.y,self.xmin,self.ymin,self.xmax,self.ymax=x,y,xmin,ymin,xmax,ymax
             self.xoffset,self.yoffset=0,0
+            self.border_hit = False
             return
 
         def transform(self, d, show_time, animate_time):
-            border_hit = False  # To track if the border was hit
+            # To track if the border was hit
+            self.border_hit = False
 
             # Apply offset and check borders
             self.x += self.xoffset
             self.y += self.yoffset
             if self.x < self.xmin:
                 self.x = self.xmin
-                border_hit = True
+                self.border_hit = True
             if self.y < self.ymin:
                 self.y = self.ymin
-                border_hit = True
+                self.border_hit = True
             if self.x > self.xmax:
                 self.x = self.xmax
-                border_hit = True
+                self.border_hit = True
             if self.y > self.ymax:
                 self.y = self.ymax
-                border_hit = True
+                self.border_hit = True
 
             # Reset offsets
             self.xoffset, self.yoffset = 0, 0
 
-            # If border hit, play bump sound
-            if border_hit:
-                renpy.music.play("sounds/walk_bump.mp3", channel="collision_channel")
 
             d.pos = (self.x, self.y)
-            return 0
+            return self.border_hit
 
 
 
@@ -92,13 +97,16 @@ init  python:
             self.is_found = False
             self.rendered = ""
             Rectangle.instances.append(self)
+        
         def __del__(self):
+            pass
             #print("Destructor called, MyClass deleted.")
 
         @classmethod
         def remove_all_instances(cls):
             while cls.instances:
                 cls.instances.pop()  # Each pop should eventually trigger __del__()
+
         @classmethod
         def remove_instance(cls, instance):
             if instance in cls.instances:
@@ -166,10 +174,56 @@ label start:
     #scene foresthamsters
     scene bg foresthamsters
 
-    alt "this is soundgame"
+    "Deep within the forest..."
 
-    "Once you add a story, pictures, and music, you can release it to the world!"
+    senior_hamster "Greetings, my apprentice!"
+    senior_hamster "You've completed your training, and now it's time to restore peace to our beloved forest."
+    senior_hamster "Our forest was once serene, filled with the delightful sounds of birds."
+    senior_hamster "But now, unpleasant bird calls disrupt our tranquil existence."
+    senior_hamster "Your task is to capture them and rid our forest of their disturbance."
+    senior_hamster "Are you prepared?"
+
+    junior_hamster "YES!"
+
+    jump tutorial
     #show screen level_display
+
+
+label tutorial:
+    "As always, we'll embark on this mission under the cover of night."
+
+    "Use the arrow keys to navigate – up, down, left, and right."
+    "Should you collide with the forest's borders, you'll hear a bump."
+    "Upon encountering a bird, you'll recognize its call."
+    "Press 'n' to capture a bird when you hear it."
+    "But remember, you must find its mate."
+    "Capture both matching bird sounds by pressing 'n'."
+    "Successful matches result in their expulsion from the forest."
+    "Failed attempts return them to their original spots."
+    "You also have a 60-minute time limit, shown in the top left corner."
+    "Press 'h' to reveal your hamster's position, and 'g' to locate the birds."
+
+    "Are you ready to embark on this quest?"
+
+    menu:
+        "Yes":
+            jump tutorial_play
+        "No":
+            "Take your time. Let me know when you're ready."
+            jump tutorial  # Restart the tutorial until the player is ready
+
+label tutorial_play:
+    play music "sounds/jungle.mp3" loop
+   
+    python:        
+            rect_positions = generate_non_overlapping_positions(2, (0.1, 0.1))            
+            k = 0
+            for i, pos in enumerate(rect_positions):
+                    Rectangle(100, 100, pos[0], pos[1], bird_sounds[k]).render()
+                    if i % 2 == 1 : k += 1 
+    #show screen timerFame(100, "level_one")
+    call screen hamster_cage(100, "level_one")  
+
 
 
 label level_one:
@@ -235,6 +289,9 @@ screen hamster_cage(max, endup):
             $ g_time = 0
 
         add Solid(color=hamster_color, xsize=100, ysize=100, xalign=0.5, yalign=0.5) anchor (0.5,0.5) at Transform(function=hamster_coordinate.transform)
+       
+        $ if hamster_coordinate.border_hit: renpy.music.play("sounds/walk_bump.mp3", channel="collision_channel")
+       
         key "h" action SetVariable("hamster_color", "#000000" if hamster_color == "#ffffff" else "#ffffff")
         key "g" action ToggleVariable("change_visibility")
         key "n" action SetLocalVariable("n_pressed",  True)
@@ -252,12 +309,18 @@ screen hamster_cage(max, endup):
 
         python:          
             hamster_rect = pygame.Rect(hamster_coordinate.x * renpy.config.screen_width, hamster_coordinate.y * renpy.config.screen_height, 100, 100)       
+            
             collision_channel = 'collision_channel'
+           
+
+            #if hamster_rect.border_hit:
+            #       renpy.music.play("sounds/walk_bump.mp3", channel="collision_channel")
 
             for rect in Rectangle.instances:
                 #print(rect)
                 rect = rect
                 music_started = rect.music_started
+                
 
                 if hamster_rect.colliderect(rect.rendered):
                     if not music_started:
