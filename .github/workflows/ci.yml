@@ -51,9 +51,8 @@ jobs:
 
     - name: Build Game
       run: |
-
         mkdir output_build
-        sudo renpy-8.2.1-sdk/renpy.sh launcher distrubution soundgame--destination output_build
+        sudo ./renpy-8.2.1-sdk/renpy.sh launcher distribute soundgame --destination output_build
         ls output
       
 
