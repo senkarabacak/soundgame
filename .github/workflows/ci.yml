@@ -47,13 +47,18 @@ jobs:
       with:
         path: "./soundgame"
 
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v4
+      with:
+          name: game
+          path: web_build.zip
 
 
-    - name: Build Game
-      run: |
-        mkdir output_build
-        sudo ./renpy-8.2.1-sdk/renpy.sh launcher distribute soundgame --destination output_build
-        ls output
+    # - name: Build Game
+    #   run: |
+    #     mkdir output_build
+    #     ./renpy-8.2.1-sdk/renpy.sh launcher distribute soundgame --destination output_build
+    #     ls output
       
 
 
