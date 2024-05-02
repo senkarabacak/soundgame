@@ -47,10 +47,10 @@ jobs:
       with:
         path: "./soundgame"
 
-    - name: 'Upload Artifact'
+    - name: Upload Artifact WEB
       uses: actions/upload-artifact@v4
       with:
-          name: game
+          name: game_web
           path: web_build.zip
 
 
@@ -62,6 +62,12 @@ jobs:
         cd ..
         ls output_build
       
+
+    - name: Upload Artifact PC
+      uses: actions/upload-artifact@v4
+      with:
+            name: game_build
+            path: output_build/ninja_hamster-1.0-pc.zip
 
 
 
