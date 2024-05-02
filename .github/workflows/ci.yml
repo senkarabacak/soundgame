@@ -60,7 +60,7 @@ jobs:
         cd renpy-8.2.1-sdk
         ./renpy.sh launcher distribute ../soundgame --destination ../output_build
         cd ..
-        ls output build
+        ls output_build
       
 
 
