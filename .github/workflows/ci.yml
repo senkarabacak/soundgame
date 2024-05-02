@@ -49,16 +49,13 @@ jobs:
 
 
 
-    # - name: Build Game
-    #   run: |
-    #     echo "Starting Ren'Py build"
-    #     mkdir output_build
-    #     sudo chmod -R 777 .
-    #     cd renpy-8.2.1-sdk/
-        
-    #     sudo chmod -R 777 output_build
-    #     sudo ./renpy.sh launcher web_build ../soundgame/ --destination ../output_build
-    #   continue-on-error: true
+    - name: Build Game
+      run: |
+
+        mkdir output_build
+        sudo renpy-8.2.1-sdk/renpy.sh launcher distrubution soundgame--destination output_build
+        ls output
+      
 
 
 
