@@ -32,6 +32,7 @@ the game is deployed continuously into the itchi.io and can be played under http
 
 ## Installation
 
+
 1. Clone the repository:
 
 `git clone https://github.com/yourusername/forest-hamsters.git`
