@@ -35,14 +35,16 @@ the game is deployed continuously into the itchi.io and can be played under http
 
 1. Clone the repository:
 
-`git clone https://github.com/yourusername/forest-hamsters.git`
+`git clone https://github.com/senkarabacak/soundgame.git`
 
 2. Install dependencies:
 
 install renpy and change to directory
 
 `wget https://www.renpy.org/dl/8.2.1/renpy-8.2.1-sdk.tar.bz2`
+
 `tar -jxvf renpy-8.2.1-sdk.tar.bz2`
+
 `cd renpy-8.2.1-sdk`
 
 install python libraries 
@@ -52,7 +54,9 @@ install python libraries
 3. Build the game:
 
 `cd renpy-8.2.1-sdk`
+
 `./renpy.sh launcher distribute /path/to/soundgame --destination path/to/output_build`
+
 Example: `./renpy.sh launcher distribute ../soundgame --destination ../output_build`
 
 4. Run game:
